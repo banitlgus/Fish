@@ -17,6 +17,10 @@ function setup() {
     particles.push(new Particle(random(aquariumX + 20, aquariumX + aquariumWidth - 20),
       random(aquariumY + 20, aquariumY + aquariumHeight - 20)));
   }
+
+  // UI
+  numberSlider = createSlider(0,30,5);
+  numberSlider.position(20,20);
 }
 
 function draw() {
@@ -31,7 +35,9 @@ function draw() {
   // Update attractor position to mouse
   attractor.position.set(mouseX, mouseY);
 
-  for (let i = particles.length - 1; i >= 0; i--) {
+  const fishCount = numberSlider.value();
+
+  for (let i = 0; i < fishCount; i++) {
     let p = particles[i];
 
     // Apply attraction force from mouse (food)
