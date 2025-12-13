@@ -1,22 +1,11 @@
-class Fish2 extends Particle {
+class IFish extends Particle {
     constructor(x, y) {
         super(x, y);
     }
 
     applyForce(force) {
-        let f = p5.Vector.mult(force, 1.5);
+        let f = p5.Vector.div(force, 5);
         this.acceleration.add(f);
-    }
-
-    update() {
-        this.velocity.add(this.acceleration);
-        this.velocity.limit(10); // Max speed
-        this.position.add(this.velocity);
-        this.acceleration.mult(0); // Reset acceleration
-
-        // Simple friction/drag
-        this.velocity.mult(0.99);
-
     }
 
     display() {

@@ -17,11 +17,11 @@ function setup() {
     particles.push(new Particle(width/2, height/2));
   }
   for (let i = 0; i < 8; i++) {
-    particles.push(new Fish1(random(aquariumX + 20, aquariumX + aquariumWidth - 20),
+    particles.push(new EFish(random(aquariumX + 20, aquariumX + aquariumWidth - 20),
       random(aquariumY + 20, aquariumY + aquariumHeight - 20)));
   }
   for (let i = 0; i < 7; i++) {
-    particles.push(new Fish2(width/2, height/2));
+    particles.push(new IFish(width/2, height/2));
   }
 
 
