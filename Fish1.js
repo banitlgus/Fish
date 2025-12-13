@@ -9,8 +9,9 @@ class Fish1 extends Particle {
         let angle = this.velocity.heading();
         rotate(angle);
 
-        noStroke();
-        fill(0);
+        strokeWeight(0.7);
+        stroke(0);
+        fill(this.color);
 
         // Draw fish body (oval)
         ellipse(-this.r / 2, 0, this.r * 1.5, this.r);
