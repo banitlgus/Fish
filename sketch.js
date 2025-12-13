@@ -13,10 +13,14 @@ function setup() {
   attractor = new Attractor(createVector(mouseX, mouseY));
 
   // Initialize a few fish particles
-  for (let i = 0; i < 30; i++) {
-    particles.push(new Particle(random(aquariumX + 20, aquariumX + aquariumWidth - 20),
+  for (let i = 0; i < 15; i++) {
+    particles.push(new Particle(width/2, height/2));
+  }
+  for (let i = 0; i < 15; i++) {
+    particles.push(new Fish1(random(aquariumX + 20, aquariumX + aquariumWidth - 20),
       random(aquariumY + 20, aquariumY + aquariumHeight - 20)));
   }
+
 
   // UI
   numberSlider = createSlider(0,30,5);
