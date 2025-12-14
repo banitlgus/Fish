@@ -12,14 +12,14 @@ class Particle {
         this.fleeingTimer = 0;
     }
 
-    applyForce(force) {
-        let f = p5.Vector.div(force, this.mass);
+    applyForce(force,value) {
+        let f = p5.Vector.mult(force, value);
         this.acceleration.add(f);
     }
 
     update() {
         this.velocity.add(this.acceleration);
-        this.velocity.limit(4); // Max speed
+        this.velocity.limit(10); // Max speed
         this.position.add(this.velocity);
         this.acceleration.mult(0); // Reset acceleration
 

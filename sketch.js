@@ -13,23 +13,23 @@ function setup() {
   attractor = new Attractor(createVector(mouseX, mouseY));
 
   // Initialize a few fish particles
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 30; i++) {
     particles.push(new Particle(width/2, height/2));
   }
-  for (let i = 0; i < 8; i++) {
-    particles.push(new EFish(random(aquariumX + 20, aquariumX + aquariumWidth - 20),
-      random(aquariumY + 20, aquariumY + aquariumHeight - 20)));
-  }
-  for (let i = 0; i < 7; i++) {
-    particles.push(new IFish(width/2, height/2));
-  }
+  // for (let i = 0; i < 8; i++) {
+  //   particles.push(new EFish(random(aquariumX + 20, aquariumX + aquariumWidth - 20),
+  //     random(aquariumY + 20, aquariumY + aquariumHeight - 20)));
+  // }
+  // for (let i = 0; i < 7; i++) {
+  //   particles.push(new IFish(width/2, height/2));
+  // }
 
 
   // UI
   numberSlider = createSlider(0, 30, 5);
   numberSlider.position(20,20);
 
-  EISlider = createSlider(0.2, 5, 3);
+  EISlider = createSlider(0.2, 8, 3);
   EISlider.position(20,40);
 }
 
@@ -52,7 +52,8 @@ function draw() {
 
     // Apply attraction force from mouse (food)
     let attractionForce = attractor.attract(p);
-    p.applyForce(attractionForce);
+    const EI = EISlider.value();
+    p.applyForce(attractionForce,EI);
 
     // Apply repulsion forces from clicks (finger)
     for (let r of repellers) {
