@@ -29,8 +29,11 @@ function setup() {
   numberSlider = createSlider(0, 30, 5);
   numberSlider.position(20,20);
 
-  EISlider = createSlider(0.2, 8, 3);
+  EISlider = createSlider(0.2, 5, 3);
   EISlider.position(20,40);
+
+  TFSlider = createSlider(0, 10, 3);
+  TFSlider.position(20,60);
 }
 
 function draw() {
@@ -58,7 +61,8 @@ function draw() {
     // Apply repulsion forces from clicks (finger)
     for (let r of repellers) {
       let repulsionForce = r.repel(p);
-      p.applyForce(repulsionForce);
+      const TF = TFSlider.value();
+      p.applyForce(repulsionForce,TF);
     }
 
     p.update();
