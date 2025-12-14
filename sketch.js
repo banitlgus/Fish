@@ -26,8 +26,11 @@ function setup() {
 
 
   // UI
-  numberSlider = createSlider(0,30,5);
+  numberSlider = createSlider(0, 30, 5);
   numberSlider.position(20,20);
+
+  EISlider = createSlider(0.2, 5, 3);
+  EISlider.position(20,40);
 }
 
 function draw() {
@@ -37,7 +40,7 @@ function draw() {
   stroke(100, 150, 255);
   strokeWeight(5);
   noFill();
-  rect(aquariumX, aquariumY, aquariumWidth, aquariumHeight, 20); // Rounded corners
+  // rect(aquariumX, aquariumY, aquariumWidth, aquariumHeight, 20); // Rounded corners
 
   // Update attractor position to mouse
   attractor.position.set(mouseX, mouseY);
