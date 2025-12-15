@@ -13,7 +13,7 @@ class Particle {
     }
 
     applyForce(force,value) {
-        let f = p5.Vector.mult(force, value);
+        let f = p5.Vector.mult(force, value/5);
         this.acceleration.add(f);
     }
 
