@@ -34,6 +34,11 @@ function setup() {
 
   TFSlider = createSlider(0, 50, 3);
   TFSlider.position(20,60);
+
+  // strokeWeight(3);
+  // textSize(10);
+  // textAlign(CENTER);
+  // text('I', 10, 35);
 }
 
 function draw() {
