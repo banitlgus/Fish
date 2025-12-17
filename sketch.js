@@ -13,13 +13,13 @@ function setup() {
   attractor = new Attractor(createVector(mouseX, mouseY));
 
   // Initialize a few fish particles
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 25; i++) {
     particles.push(new Particle(width/2, height/2));
   }
-  // for (let i = 0; i < 8; i++) {
-  //   particles.push(new EFish(random(aquariumX + 20, aquariumX + aquariumWidth - 20),
-  //     random(aquariumY + 20, aquariumY + aquariumHeight - 20)));
-  // }
+  for (let i = 0; i < 5; i++) {
+    particles.push(new Cat(random(aquariumX + 20, aquariumX + aquariumWidth - 20),
+      random(aquariumY + 20, aquariumY + aquariumHeight - 20)));
+  }
   // for (let i = 0; i < 7; i++) {
   //   particles.push(new IFish(width/2, height/2));
   // }
