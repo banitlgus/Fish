@@ -6,7 +6,8 @@ class Cat extends Particle {
   display() {
     push();
     translate(this.position.x, this.position.y);
-    let angle = this.velocity.heading();
+
+    let angle = atan2(mouseY - this.position.y, mouseX - this.position.x);
     rotate(angle);
     scale(0.7);
 
@@ -14,6 +15,7 @@ class Cat extends Particle {
     noStroke();
     fill(50); // Charcoal cat
     ellipse(0, 0, 30, 50); // Body
+
 
     // Head
     ellipse(0, -25, 30, 30); // Head
@@ -30,6 +32,7 @@ class Cat extends Particle {
     fill(0);
     ellipse(-6, -28, 2, 5); // Slit pupils
     ellipse(6, -28, 2, 5);
+
 
     pop();
   }
