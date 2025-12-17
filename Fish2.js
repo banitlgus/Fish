@@ -34,53 +34,59 @@ class Cat extends Particle {
     //     pop();
     // }
 
-      display() {
-    
+  display() {
     push();
     translate(this.position.x, this.position.y);
-    let angle = this.velocity.heading();
-    rotate(angle);
     
-    noStroke();
-    fill(this.color);
+    // Rotate towards velocity if moving, else stay put
+    if (this.vel.mag() > 0.1) {
+      rotate(this.vel.heading() + PI / 2);
+    }
+    
+    // Determine visuals based on state
+    if (this.state === 'fleeing') {
+      // Scared cat: elongated, ears back
+      scale(0.9, 1.2);
+    } else if (this.state === 'eating') {
+      // Eating: crouched
+      scale(1.1, 0.9);
+    }
 
-    // Tail (Wiggling)
-    let wiggle = sin(frameCount * 0.2 + this.tailOffset) * 10;
-    stroke(this.color);
-    strokeWeight(6);
-    noFill();
-    beginShape();
-    vertex(0, 10);
-    bezierVertex(0, 30, wiggle, 40, wiggle, 50);
-    endShape();
-    
     // Body
     noStroke();
-    fill(this.color);
-    ellipse(0, 0, this.r * 1.5, this.r * 2);
+    fill(50); // Charcoal cat
+    ellipse(0, 0, 30, 50); // Body
+
+    // Head
+    ellipse(0, -25, 30, 30); // Head
     
     // Ears
-    triangle(-this.r * 0.5, -this.r * 0.8, -this.r * 0.8, -this.r * 1.4, -this.r * 0.2, -this.r * 0.9);
-    triangle(this.r * 0.5, -this.r * 0.8, this.r * 0.8, -this.r * 1.4, this.r * 0.2, -this.r * 0.9);
+    fill(50);
+    triangle(-12, -35, -5, -45, -2, -35); // Left Ear
+    triangle(12, -35, 5, -45, 2, -35);   // Right Ear
 
     // Eyes
-    fill(255); // Whites
-    ellipse(-this.r * 0.3, -this.r * 0.4, 8, 8);
-    ellipse(this.r * 0.3, -this.r * 0.4, 8, 8);
-    fill(0); // Pupils
-    ellipse(-this.r * 0.3, -this.r * 0.4, 3, 3);
-    ellipse(this.r * 0.3, -this.r * 0.4, 3, 3);
-    
-    // Whiskers
-    stroke(200);
-    strokeWeight(1);
-    line(-5, 5, -25, 0);
-    line(-5, 8, -25, 10);
-    line(5, 5, 25, 0);
-    line(5, 8, 25, 10);
+    if (this.state === 'fleeing') {
+      fill(255); // Wide eyes
+      ellipse(-6, -28, 10, 10);
+      ellipse(6, -28, 10, 10);
+      fill(0);
+      ellipse(-6, -28, 2, 2);
+      ellipse(6, -28, 2, 2);
+    } else if (this.state === 'eating') {
+      stroke(255);
+      strokeWeight(2);
+      line(-10, -28, -2, -28); // Closed happy eyes
+      line(2, -28, 10, -28);
+    } else {
+      fill(255, 255, 200); // Normal eyes
+      ellipse(-6, -28, 8, 6);
+      ellipse(6, -28, 8, 6);
+      fill(0);
+      ellipse(-6, -28, 2, 5); // Slit pupils
+      ellipse(6, -28, 2, 5);
+    }
 
-    pop();
-  }
 
-
+}
 }
