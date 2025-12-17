@@ -3,11 +3,6 @@ class Cat extends Particle {
     super(x, y);
   }
 
- applyForce(force) {
-      let f = p5.Vector.mult(force, 0.5);
-      this.acceleration.add(f);
-    }
-
   display() {
     push();
     translate(this.position.x, this.position.y);
@@ -35,6 +30,8 @@ class Cat extends Particle {
     fill(0);
     ellipse(-6, -28, 2, 5); // Slit pupils
     ellipse(6, -28, 2, 5);
+
+    pop();
   }
 
 
