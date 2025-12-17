@@ -8,7 +8,7 @@ class Cat extends Particle {
     translate(this.position.x, this.position.y);
 
     let angle = atan2(mouseY - this.position.y, mouseX - this.position.x);
-    rotate(angle);
+    rotate(angle + HALF_PI);
     scale(0.7);
 
     // Body
@@ -34,8 +34,24 @@ class Cat extends Particle {
     ellipse(6, -28, 2, 5);
 
 
+
+    // Tail (Animated)
+    noFill();
+    stroke(50);
+    strokeWeight(6);
+    this.tailAngle += 0.2;
+    let tailWag = sin(this.tailAngle) * 10;
+       // Puffed tail straight back
+       line(0, 20, 0, 60);
+       // Waggly tail
+       beginShape();
+       vertex(0, 20);
+       bezierVertex(10, 30, -10 + tailWag, 50, 0 + tailWag, 60);
+       endShape();
+    
+
+
+
     pop();
   }
-
-
 }
