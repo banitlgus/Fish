@@ -1,6 +1,7 @@
 class Cat extends Particle {
   constructor(x, y) {
     super(x, y);
+    this.tailAngle = 0;
   }
 
   display() {
@@ -42,7 +43,7 @@ class Cat extends Particle {
     this.tailAngle += 0.2;
     let tailWag = sin(this.tailAngle) * 10;
        // Puffed tail straight back
-       line(0, 20, 0, 60);
+      //  line(0, 20, 0, 60);
        // Waggly tail
        beginShape();
        vertex(0, 20);
