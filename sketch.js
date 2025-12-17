@@ -75,33 +75,6 @@ function draw() {
     p.display();
   }
 
-    let fishTotal = 25;
-    let catTotal = 5;
-    let activeFishCount = min(numberSlider.value(), fishTotal);
-
-    for (let ci = fishTotal; ci < fishTotal + catTotal; ci ++) {
-      let cat = particles[ci];
-
-       let target = null;
-    let bestD = Infinity;
-
-    for (let fi = 0; fi < activeFishCount; fi++) {
-      let fish = particles[fi];
-      let d = p5.Vector.dist(cat.position, fish.position);
-      if (d < bestD) {
-        bestD = d;
-        target = fish;
-      }
-    }
-
-    cat.chase(target);
-    cat.update();
-    cat.edges();
-    cat.display(target);
-
-    
-  }
-
   // Draw repellers temporarily
   for (let i = repellers.length - 1; i >= 0; i--) {
     repellers[i].display();
