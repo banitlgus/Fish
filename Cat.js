@@ -2,13 +2,37 @@ class Cat extends Particle {
   constructor(x, y) {
     super(x, y);
     this.tailAngle = 0;
+    
+    this.maxSpeed = 3;
+    this.maxForce = 0.2;
   }
 
-  display() {
+  chase(target) {
+    if (!target) return;
+
+    // 1) desired velocity = target 방향
+    let desired = p5.Vector.sub(target.position, this.position);
+    let d = desired.mag();
+
+    // 너무 가까우면 속도 줄이기 (도착/버벅임 방지)
+    let speed = this.maxSpeed;
+    if (d < 80) speed = map(d, 0, 80, 0, this.maxSpeed);
+    desired.setMag(speed);
+
+    // 2) steering = desired - current velocity
+    let steer = p5.Vector.sub(desired, this.velocity);
+    steer.limit(this.maxForce);
+
+    // applyForce는 value/5를 곱하니까 value=5면 그대로 들어감
+    this.applyForce(steer, 5);
+  }
+
+  display(target) {
     push();
     translate(this.position.x, this.position.y);
 
-    let angle = atan2(mouseY - this.position.y, mouseX - this.position.x);
+    let angle = 0;
+     if (target) angle = atan2(target.position.y - this.position.y, target.position.x - this.position.x);
     rotate(angle + HALF_PI);
     scale(0.7);
 
@@ -42,8 +66,7 @@ class Cat extends Particle {
     strokeWeight(6);
     this.tailAngle += 0.2;
     let tailWag = sin(this.tailAngle) * 10;
-       // Puffed tail straight back
-      //  line(0, 20, 0, 60);
+
        // Waggly tail
        beginShape();
        vertex(0, 20);
