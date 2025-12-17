@@ -1,18 +1,14 @@
 class Cat extends Particle {
-    constructor(x, y) {
-        super(x, y);
-    }
-
-    applyForce(force) {
-        let f = p5.Vector.div(force, 5);
-        this.acceleration.add(f);
-    }
+  constructor(x, y) {
+    super(x, y);
+  }
 
   display() {
     push();
     translate(this.position.x, this.position.y);
     let angle = this.velocity.heading();
     rotate(angle);
+    scale(0.5);
 
     // Body
     noStroke();
@@ -21,20 +17,20 @@ class Cat extends Particle {
 
     // Head
     ellipse(0, -25, 30, 30); // Head
-    
+
     // Ears
     fill(50);
     triangle(-12, -35, -5, -45, -2, -35); // Left Ear
     triangle(12, -35, 5, -45, 2, -35);   // Right Ear
 
 
-      fill(255, 255, 200); // Normal eyes
-      ellipse(-6, -28, 8, 6);
-      ellipse(6, -28, 8, 6);
-      fill(0);
-      ellipse(-6, -28, 2, 5); // Slit pupils
-      ellipse(6, -28, 2, 5);
-    }
+    fill(255, 255, 200); // Normal eyes
+    ellipse(-6, -28, 8, 6);
+    ellipse(6, -28, 8, 6);
+    fill(0);
+    ellipse(-6, -28, 2, 5); // Slit pupils
+    ellipse(6, -28, 2, 5);
+  }
 
 
 }
