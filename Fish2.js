@@ -63,13 +63,13 @@ class Cat extends Particle {
     triangle(-this.r * 0.5, -this.r * 0.8, -this.r * 0.8, -this.r * 1.4, -this.r * 0.2, -this.r * 0.9);
     triangle(this.r * 0.5, -this.r * 0.8, this.r * 0.8, -this.r * 1.4, this.r * 0.2, -this.r * 0.9);
 
-    // // Eyes
-    // fill(255); // Whites
-    // ellipse(-this.r * 0.3, -this.r * 0.4, 8, 8);
-    // ellipse(this.r * 0.3, -this.r * 0.4, 8, 8);
-    // fill(0); // Pupils
-    // ellipse(-this.r * 0.3, -this.r * 0.4, 3, 3);
-    // ellipse(this.r * 0.3, -this.r * 0.4, 3, 3);
+    // Eyes
+    fill(255); // Whites
+    ellipse(-this.r * 0.3, -this.r * 0.4, 8, 8);
+    ellipse(this.r * 0.3, -this.r * 0.4, 8, 8);
+    fill(0); // Pupils
+    ellipse(-this.r * 0.3, -this.r * 0.4, 3, 3);
+    ellipse(this.r * 0.3, -this.r * 0.4, 3, 3);
     
     // Whiskers
     stroke(200);
