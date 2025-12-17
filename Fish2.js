@@ -3,12 +3,17 @@ class Cat extends Particle {
     super(x, y);
   }
 
+ applyForce(force) {
+      let f = p5.Vector.mult(force, 0.5);
+      this.acceleration.add(f);
+    }
+
   display() {
     push();
     translate(this.position.x, this.position.y);
     let angle = this.velocity.heading();
     rotate(angle);
-    scale(0.5);
+    scale(0.7);
 
     // Body
     noStroke();
